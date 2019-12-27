@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-const { Header, Sider, Content } = Layout;
+import { Layout } from 'antd';
+import MenuSider from './components/sider/index.js';
+import Header from './components/header/index.js';
+import Content from './components/content/index.js'
+import './index.css';
 
 class Layouts extends Component {
   constructor(props) {
@@ -17,43 +20,14 @@ class Layouts extends Component {
   };
 
   render() {
+    const { collapsed } = this.state;
+    const { children } = this.props;
     return (
-      <Layout>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+      <Layout className="container">
+        <MenuSider collapsed={collapsed}/>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
-          </Header>
-          <Content
-            style={{
-              margin: '24px 16px',
-              padding: 24,
-              background: '#fff',
-              height: '100%'
-            }}
-          >
-            { this.props.children }
-          </Content>
+          <Header collapsed={collapsed} toggle={this.toggle}/>
+          <Content children={children}/> 
         </Layout>
       </Layout>
     )

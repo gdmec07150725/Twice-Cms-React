@@ -12,19 +12,21 @@ const routerMap = [
   {
     path: '/',
     redirect: '/workplace/index',
-    hidden: false,
+    hidden: true,
     exact: true,
   },
   {
     path: '/workplace',
-    // redirect: '/workplace/index',
     component: Layouts,
+    title: 'Workplace Manage',
+    icon: 'dashboard',
     children: [
       {
         path: '/workplace/index',
         component: Dashboard,
         hidden: false,
         exact: true,
+        title: 'Dashboard'
       },
     ]
   },
@@ -32,12 +34,15 @@ const routerMap = [
     path: '/notes',
     component: Layouts,
     hidden: false,
+    title: 'Notes Manage',
+    icon: 'profile',
     children: [
       {
         path: '/notes/index',
         component: Notes,
         hidden: false,
         exact: true,
+        title: 'Notes'
       }
     ]
   },
@@ -45,18 +50,22 @@ const routerMap = [
     path: '/document',
     component: Layouts,
     hidden: false,
+    title: 'Document Manage',
+    icon: 'folder-open',
     children: [
       {
         path: '/document/folder',
         component: Folder,
         hidden: false,
         exact: true,
+        title: 'Folder',
       },
       {
         path: '/document/file',
         component: File,
         hidden: false,
         exact: true,
+        title: 'File'
       },
     ]
   },
