@@ -1,5 +1,5 @@
 import * as Ajax from '@/common/ajax';
 
-export async function userInfo(params) {
-  return Ajax.fetchJSONByGet(`/data/cityinfo/${params.cityCode}.html`)
+export function userInfo(params) {
+  return Ajax.fetchJSONByGet(`/data/cityinfo/101280101.html`)
 }
