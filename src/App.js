@@ -2,7 +2,7 @@ import React, { Component, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import router from '@/routes';
 import { Spin } from 'antd';
-import './App.css';
+import './App.less';
 
 const Login = lazy(() => import('@/pages/Login'));
 const Error_404 = lazy(() => import('@/pages/Error/404'));

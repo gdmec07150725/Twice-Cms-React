@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.7.4",
-    "@babel/plugin-proposal-decorators": "^7.7.4",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -154,6 +153,12 @@
         {
           "legacy": true
         }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
       ]
     ],
     "presets": [
@@ -161,6 +166,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "react-scripts": "^3.3.0"

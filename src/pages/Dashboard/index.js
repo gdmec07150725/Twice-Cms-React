@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { fetchUserInfo } from '@/actions/user'; 
 
-// @connect(state => ({
-//   weatherInfo: state.weatherInfo
-// }))
+@connect(state => ({
+  weatherInfo: state.userInfo.weatherInfo.weatherinfo,
+  loading: state.userInfo.loading
+}))
 class Dashboard extends Component {
   constructor() {
     super(...arguments);
@@ -14,7 +15,9 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.loadGuangzhouWeather();
+    this.props.dispatch(
+      fetchUserInfo({cityCode: 101280101})
+    )
   }
   render() {
     const { weatherInfo: { city, weather, temp1, temp2 } = {}, loading } = this.props;
@@ -38,19 +41,20 @@ class Dashboard extends Component {
     )
   }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    loadGuangzhouWeather: () => {
-      dispatch(fetchUserInfo({cityCode: 101280101}));
-    }
-  }
-}
 
-const mapStateToProps = (state, ownProps) => {
-  const { userInfo: { weatherInfo: { weatherinfo } = {}, loading } = {} } = state;
-  return {
-    weatherInfo: weatherinfo,
-    loading
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     loadGuangzhouWeather: () => {
+//       dispatch(fetchUserInfo({cityCode: 101280101}));
+//     }
+//   }
+// }
+
+// const mapStateToProps = (state, ownProps) => {
+//   const { userInfo: { weatherInfo: { weatherinfo } = {}, loading } = {} } = state;
+//   return {
+//     weatherInfo: weatherinfo,
+//     loading
+//   }
+// }
+export default Dashboard;

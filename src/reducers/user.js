@@ -12,5 +12,7 @@ export const userInfo = handleActions(
       return { ...state, weatherInfo: res, loading: false }
     }
   },
-  {} // 初始值
+  {
+    weatherInfo: {}
+  } // 初始值
 )

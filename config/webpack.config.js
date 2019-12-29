@@ -48,9 +48,9 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-// use less
-const lessRegex = /\.less$/;
-const lessModuleRegex = /\.module\.less$/;
+// // use less
+// const lessRegex = /\.less$/;
+// const lessModuleRegex = /\.module\.less$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -95,10 +95,10 @@ module.exports = function(webpackEnv) {
         options: cssOptions,
       },
       // add Less config
-      {
-        loader: require.resolve('less-loader'),
-        options: lessOptions,
-      },
+      // {
+      //   loader: require.resolve('less-loader'),
+      //   options: lessOptions,
+      // },
       {
         // Options for PostCSS as we reference these options twice
         // Adds vendor prefixing based on your specified browser support in
@@ -452,30 +452,30 @@ module.exports = function(webpackEnv) {
               sideEffects: true,
             },
             // 添加less配置
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use: getStyleLoaders(
-              {
-                  importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-              },
-              'less-loader'
-              ),
-              sideEffects: true,
-            },
-            {
-              test: lessModuleRegex,
-              use: getStyleLoaders(
-              {
-                  importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules: true,
-                  getLocalIdent: getCSSModuleLocalIdent,
-              },
-              'less-loader'
-              ),
-            },
+            // {
+            //   test: lessRegex,
+            //   exclude: lessModuleRegex,
+            //   use: getStyleLoaders(
+            //   {
+            //       importLoaders: 2,
+            //       sourceMap: isEnvProduction && shouldUseSourceMap,
+            //   },
+            //   'less-loader'
+            //   ),
+            //   sideEffects: true,
+            // },
+            // {
+            //   test: lessModuleRegex,
+            //   use: getStyleLoaders(
+            //   {
+            //       importLoaders: 2,
+            //       sourceMap: isEnvProduction && shouldUseSourceMap,
+            //       modules: true,
+            //       getLocalIdent: getCSSModuleLocalIdent,
+            //   },
+            //   'less-loader'
+            //   ),
+            // },
             // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
             // using the extension .module.css
             {
